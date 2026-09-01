@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
+{{ content_for_header }}
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+<div class="announcement">🇨🇱 Tradición que se baila · Zapatos de cueca para mujer · Tallas 35 al 40</div>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="{{ routes.root_url }}">{% if settings.logo != blank %}{{ settings.logo | image_url: width: 320 | image_tag: alt: shop.name, class: 'logo' }}{% else %}<span class="brand-main">{{ shop.name }}</span><span class="brand-sub">CUECA · TRADICIÓN · ESTILO</span>{% endif %}</a>
+<nav class="main-nav"><a href="{{ routes.root_url }}">Inicio</a><a href="/collections/mujer">Mujer</a><a href="/collections/huaso">Huaso</a><a href="{{ routes.all_products_collection_url }}">Tienda</a><a href="/pages/guia-de-tallas">Guía de tallas</a></nav>
+<a class="cart-link" href="{{ routes.cart_url }}">Bolsa <span>{{ cart.item_count }}</span></a>
+</div></header>
+<main id="MainContent">{{ content_for_layout }}</main>
+<footer class="footer"><div class="footer-inner"><div><div class="footer-brand">{{ shop.name }}</div><p>Productos para vivir, bailar y celebrar nuestra tradición chilena.</p></div><div><strong>Colecciones</strong><a href="{{ routes.all_products_collection_url }}">Tienda</a><a href="/collections/mujer">Mujer</a><a href="/collections/huaso">Huaso</a></div><div><strong>Ayuda</strong><a href="/pages/guia-de-tallas">Guía de tallas</a><a href="/pages/contacto">Contacto</a></div></div><div class="footer-bottom">🇨🇱 Con orgullo chileno · {{ 'now' | date: '%Y' }}</div></footer>
+</body></html>
